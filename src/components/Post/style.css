@@ -10,6 +10,7 @@
 
 .avatarContainer {
     width: 33%;
+    position: relative;
     display: flex;   
     flex-direction: column;
     align-items: center;
@@ -33,13 +34,22 @@
     width: 30px;
     border-radius: 15px;
 }
+.categoryPostIcon {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    border-radius: 7px;
+    background-color: #91DC4B;
+    bottom: 48px;
+    right: 17px;
+}
 
 .noReadMark {
     height: 10px;
     width: 10px;
     border-radius: 5px;
     background-color: #249ADB;
-    margin-top: 12px;
+    margin-top: 14px;
 }
 /* Text Style */
 

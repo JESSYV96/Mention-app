@@ -8,7 +8,8 @@ const Post = () => {
                 <img 
                 className="postAvatar"
                 src="https://picsum.photos/seed/200/300.jpg" 
-                alt=""/>
+                alt="avatar"/>
+                <span className="categoryPostIcon" />
                 <div className="noReadMark"></div>
             </div>
             <div className="postDetailsContainer">
