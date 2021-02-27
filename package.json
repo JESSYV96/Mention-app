@@ -10,6 +10,8 @@
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "axios": "^0.21.1",
+    "concurrently": "^6.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
@@ -17,7 +19,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-client": "react-scripts start",
+    "start-server": "./node_modules/.bin/http-server -a localhost -p 8081 -P https://web.mention.com --cors=* -c-1",
+    "start": "concurrently \"yarn start-server\" \"yarn start-client\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -39,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  },
+  "proxy": "http://localhost:8081"
 }
