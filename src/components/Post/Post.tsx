@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
+import parse from 'html-react-parser';
 import './style.css'
 
 const Post = ({ mention }: any) => {
     const [isMentionRead, setIsMentionRead] = useState(mention.read)
 
-    const underlineKeyword = (text: string, keyword: string) => {
-
+    const overlineKeyword = (text: string, keyword: string = "mention"): string => {
+        const regex = new RegExp(`${keyword}`, 'ig')
+        let updateText = text.replace(regex, `<span class="overlineKeyword">${keyword}</span>`)
+        return updateText
     }
 
-    const formatStringDate = (stringDate: string): String => {
+    const formatStringDate = (stringDate: string): string => {
         const dateformatted: Date = new Date(stringDate);
         const month = new Intl.DateTimeFormat('en-US', { month: "short" }).format(dateformatted);
         return `${dateformatted.getDate()} ${month}`
@@ -31,8 +34,8 @@ const Post = ({ mention }: any) => {
                 </div>
                 <div className="postDetailsBody">
                     <span className="titleText">{mention.title.length > 35 ? `${mention.title.substring(0, 30)} ...` : mention.title}</span>
-                    <span className="descriptionText">
-                        {mention.description.length > 80 ? `${mention.description.substring(0, 80)} ...` : mention.description}
+                    <span className="descriptionText ">
+                        {parse(overlineKeyword(mention.description_short))}
                     </span>
                 </div>
             </div>
